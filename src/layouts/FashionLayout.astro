@@ -1,6 +1,7 @@
 ---
+// Import the CSS for the layout
 import "../base.css";
-import "@fontsource-variable/montserrat";
+import "@fontsource-variable/playfair-display";
 import { ClientRouter } from "astro:transitions";
 ---
 
@@ -11,14 +12,14 @@ import { ClientRouter } from "astro:transitions";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astha Maurya</title>
+    <title>Fashion portfolio</title>
     <ClientRouter />
   </head>
   <body>
     <slot />
   </body><style>
     body {
-      font-family: "Montserrat Variable", sans-serif;
+      font-family: "Playfair Display Variable", serif;
     }
   </style>
 </html>

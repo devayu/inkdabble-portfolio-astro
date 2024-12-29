@@ -1,6 +1,8 @@
 ---
+// Import the CSS for the layout
 import "../base.css";
-import "@fontsource-variable/montserrat";
+// Supports weights 400-700
+import "@fontsource-variable/cabin/wdth.css";
 import { ClientRouter } from "astro:transitions";
 ---
 
@@ -11,14 +13,14 @@ import { ClientRouter } from "astro:transitions";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astha Maurya</title>
+    <title>Graphics portfolio</title>
     <ClientRouter />
   </head>
   <body>
     <slot />
   </body><style>
     body {
-      font-family: "Montserrat Variable", sans-serif;
+      font-family: "Cabin", sans-serif;
     }
   </style>
 </html>

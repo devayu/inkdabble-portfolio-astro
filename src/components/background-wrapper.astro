@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+import bg from "../assets/bg2.jpg";
+---
+
+<div class="relative min-h-screen">
+  <!-- <Image
+    alt="background-wrapper"
+    src={bg}
+    class={"absolute opacity-20 w-full h-full object-cover"}
+  /> -->
+  <div class="relative z-10">
+    <slot />
+  </div>
+</div>

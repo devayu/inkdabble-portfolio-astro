@@ -1,11 +1,58 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/ui/header";
+import BackgroundWrapper from "@components/background-wrapper.astro";
+// import CategorySelector from "@components/category-selector.astro";
+import CategorySelector from "../components/ui/category-selector";
+import graphicCategory from "@assets/design-category.jpg";
+import fashionCategory from "@assets/fashion-category.jpg";
+import { getImage } from "astro:assets";
+import type {
+  GetImageResult,
+  ImageMetadata,
+  UnresolvedImageTransform,
+} from "astro";
+const unoptimizedImages = [
+  {
+    image: graphicCategory,
+    name: "graphic",
+    subtitle: "graphic portfolio",
+    path: "graphic",
+  },
+  {
+    image: fashionCategory,
+    name: "fashion",
+    subtitle: "fashion portfolio",
+    path: "fashion",
+  },
+];
+interface IOptimizedImages {
+  image: ImageMetadata;
+  name: string;
+  subtitle: string;
+  path: string;
+  optimizedImage?: GetImageResult;
+}
+const optimizedImages = await Promise.all(
+  unoptimizedImages.map(async (image: IOptimizedImages) => {
+    const oI = await getImage({
+      src: image.image,
+      format: "webp",
+      quality: 50,
+    });
+    return { ...image, optimizedImage: oI };
+  })
+);
+console.log(optimizedImages);
 ---
 
 <Layout>
-	<Welcome />
+  <Fragment client:load>
+    <Header currentUrl={Astro.url.pathname} client:load />
+    <BackgroundWrapper>
+      <CategorySelector client:load images={optimizedImages} />
+      <!-- <CategorySelector /> -->
+    </BackgroundWrapper>
+  </Fragment>
 </Layout>

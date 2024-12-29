@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/react": "^4.1.2",
     "@astrojs/tailwind": "^5.1.4",
+    "@astrojs/vercel": "^8.0.1",
     "@fontsource-variable/cabin": "^5.1.0",
     "@fontsource-variable/montserrat": "^5.1.0",
     "@fontsource-variable/playfair-display": "^5.1.0",

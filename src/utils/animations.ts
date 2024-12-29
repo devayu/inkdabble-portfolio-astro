@@ -1,3 +1,4 @@
+// Animation variants
 const transition = { duration: 1, ease: [0.76, 0, 0.24, 1] };
 
 export const opacity = {
@@ -96,7 +97,7 @@ export const background = {
   },
 };
 
-export const categoryImage = {
+export const categoryImageAV = {
   initial: {
     scale: 1,
     opacity: 1,

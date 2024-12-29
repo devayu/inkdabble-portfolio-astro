@@ -1,7 +1,9 @@
 ---
+import Header from "@components/ui/header";
 import "../base.css";
 import "@fontsource-variable/montserrat";
 import { ClientRouter } from "astro:transitions";
+import BackgroundWrapper from "@components/background-wrapper.astro";
 ---
 
 <!doctype html>
@@ -15,7 +17,10 @@ import { ClientRouter } from "astro:transitions";
     <ClientRouter />
   </head>
   <body>
-    <slot />
+    <Header currentUrl={Astro.url.pathname} client:load />
+    <BackgroundWrapper>
+      <slot />
+    </BackgroundWrapper>
   </body><style>
     body {
       font-family: "Montserrat Variable", sans-serif;

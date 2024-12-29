@@ -1,0 +1,38 @@
+{
+  "creativeFields": [
+    "Visual Identity",
+    "Logo Design",
+    "Print Design",
+    "Social Media Design",
+    "Poster Design",
+    "Magazine Design",
+    "CAD",
+    "Digital Artworks",
+    "Fashion Illustration",
+    "Book Design"
+  ],
+  "tools": [
+    {
+      "name": "Adobe Photoshop",
+      "icon": "photoshop"
+    },
+    {
+      "name": "Adobe Illustrator",
+      "icon": "illustrator"
+    },
+    {
+      "name": "Adobe inDesign",
+      "icon": "indesign"
+    },
+    {
+      "name": "CLO 3D",
+      "icon": "clo"
+    },
+    {
+      "name": "Procreate",
+      "icon": "procreate"
+    }
+  ],
+  "name": "Astha maurya",
+  "id": "about-section"
+}

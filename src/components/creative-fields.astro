@@ -1,0 +1,14 @@
+---
+interface CreativeFieldsProps {
+  creativeFields: string[];
+}
+const { creativeFields = [] } = Astro.props as CreativeFieldsProps;
+---
+
+<div class="flex flex-wrap gap-2">
+  {
+    creativeFields.map((title: string) => (
+      <p class="rounded-lg border border-white/[0.2] p-2 px-4">{title}</p>
+    ))
+  }
+</div>

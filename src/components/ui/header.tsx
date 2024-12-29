@@ -9,7 +9,7 @@ import { useState } from "react";
 const Header = ({ currentUrl }: { currentUrl: string }) => {
   const [isActive, setIsActive] = useState(false);
   return (
-    <motion.div
+    <motion.header
       className="fixed top-0 z-50 box-border w-full p-4 uppercase"
       variants={color}
       initial="initial"
@@ -64,7 +64,7 @@ const Header = ({ currentUrl }: { currentUrl: string }) => {
         initial="initial"
         animate={isActive ? "open" : "closed"}
       ></motion.div> */}
-    </motion.div>
+    </motion.header>
   );
 };
 

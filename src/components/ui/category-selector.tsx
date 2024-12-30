@@ -3,6 +3,8 @@ import { categoryImageAV } from "../../utils/animations";
 import type { IOptimizedImages } from "src/types/types";
 import { cn } from "@utils/utils";
 import type { PropsWithChildren } from "react";
+import { AdvancedImage } from "@cloudinary/react";
+import { Cloudinary } from "@cloudinary/url-gen";
 
 interface IImageLink {
   path: string;
@@ -14,7 +16,9 @@ interface IImageLink {
   imageWrapperClassName?: string;
   width?: number;
   height?: number;
+  url?: IOptimizedImages["url"];
 }
+
 const CategorySelector = ({ images = [] }: { images: IOptimizedImages[] }) => {
   return (
     <motion.div
@@ -22,7 +26,7 @@ const CategorySelector = ({ images = [] }: { images: IOptimizedImages[] }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.5 }}
-      className="mt-20 w-full"
+      className="w-full"
     >
       <ImageLinkContainer images={images}></ImageLinkContainer>
     </motion.div>
@@ -34,14 +38,19 @@ const ImageLink = ({
   name,
   alt,
   optimizedImage,
+  url,
   subtitle,
   imageWrapperClassName,
   className,
   width,
   height,
 }: IImageLink) => {
+  const cld = new Cloudinary({ cloud: { cloudName: "diyflwga5" } });
+  const img = cld.image("design-category_mykw75").format("auto");
+  console.log(img);
+
   return (
-    <a href={path} key={name} className="w-[40%]">
+    <a href={path} className="w-full lg:w-[40%]">
       <motion.div
         className={`${cn("relative h-full w-full cursor-pointer", imageWrapperClassName)}`}
         variants={categoryImageAV}
@@ -49,12 +58,12 @@ const ImageLink = ({
         whileHover={{ scale: 0.9 }}
       >
         <img
-          src={optimizedImage?.src}
+          src={url}
           alt={alt}
           width={width}
           height={height}
           className={`${cn("absolute h-full w-full", className)}`}
-        ></img>
+        />
         <motion.div className="absolute inset-0 flex items-center justify-center">
           <div className="absolute inset-0 h-full bg-black opacity-60"></div>
           <span className="z-10 text-4xl font-bold uppercase tracking-wider text-white">
@@ -72,8 +81,9 @@ const ImageLinkContainer = ({ images }: { images: IOptimizedImages[] }) => {
       {images.map((image) => {
         return (
           <ImageLink
+            key={image.name}
             {...image}
-            imageWrapperClassName="min-h-[80vh]"
+            imageWrapperClassName="min-h-[40vh] lg:min-h-[80vh]"
             className="object-cover"
           ></ImageLink>
         );

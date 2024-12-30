@@ -1,0 +1,27 @@
+---
+interface Props {
+  educations: {
+    time: string;
+    school: string;
+    degree: string;
+  }[];
+}
+const { educations = [] } = Astro.props;
+---
+
+<div class="flex flex-col gap-4">
+  <h1 class="text-2xl font-bold uppercase">Education</h1>
+  <div class="flex flex-wrap items-center gap-8">
+    {
+      educations.map(({ time, school, degree }) => {
+        return (
+          <div class="flex flex-col text-sm">
+            <p>{time}</p>
+            <p class="text-base font-medium">{school}</p>
+            <p>{degree}</p>
+          </div>
+        );
+      })
+    }
+  </div>
+</div>

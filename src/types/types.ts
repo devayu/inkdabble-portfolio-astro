@@ -7,4 +7,5 @@ export interface IOptimizedImages {
   path: string;
   alt: string;
   optimizedImage?: GetImageResult;
+  url?: string;
 }

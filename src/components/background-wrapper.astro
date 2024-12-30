@@ -1,17 +1,18 @@
 ---
 import { Image } from "astro:assets";
 import bg from "../assets/bg.jpg";
+import { cn } from "@utils/utils";
+import { CldImage } from "astro-cloudinary";
 ---
 
-<div
-  class="relative min-h-[calc(100vh_-_var(--header-height))] pt-[var(--header-height)]"
->
-  <Image
+<div class="mx-auto min-h-screen max-w-[84rem] p-4 pt-[var(--header-height)]">
+  <!-- <CldImage
     alt="background-wrapper"
-    src={bg}
-    class={"absolute opacity-20 w-full h-full object-cover"}
-  />
-  <div class="relative z-10 mx-auto max-w-[84rem]">
+    src="bg"
+    class={`${cn("absolute opacity-20 w-full h-full object-cover")}`}
+  /> -->
+  <slot />
+  <!-- <div class="mx-auto max-w-[84rem] p-4">
     <slot />
-  </div>
+  </div> -->
 </div>

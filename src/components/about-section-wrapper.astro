@@ -1,0 +1,23 @@
+---
+import CreativeFields from "@components/creative-fields.astro";
+import Education from "@components/education.astro";
+import Experiance from "@components/experiance.astro";
+import { ProfileImage } from "@components/ui/profile-image";
+import Tools from "@components/ui/tools";
+import { getEntry } from "astro:content";
+
+const creativeFields = await getEntry("about", "creativeFields");
+const tools = await getEntry("about", "tools");
+const experiances = await getEntry("about", "experiances");
+const educations = await getEntry("about", "education");
+---
+
+<div class="grid h-full gap-8 py-4 md:grid-cols-3">
+  <ProfileImage />
+  <div class="flex flex-col gap-8">
+    <CreativeFields creativeFields={creativeFields?.data} />
+    <Tools tools={tools?.data} client:load />
+    <Education educations={educations?.data} />
+  </div>
+  <Experiance experiances={experiances?.data} />
+</div>

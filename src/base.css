@@ -7,6 +7,10 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --header-height: 68px;
+  --color-white: 248, 246, 244;
+  --color-white-alpha: rgba(var(--color-white), 0.2);
+  --bg-primary: #08090a;
+  --color-bg-translucent: hsla(0, 0%, 100%, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,10 +23,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--bg-primary);
+  /* background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(97, 106, 115, 0.12) 40%,
+    rgba(97, 106, 115, 0.12) 60%,
+    rgba(97, 106, 115, 0)
+  ); */
 }

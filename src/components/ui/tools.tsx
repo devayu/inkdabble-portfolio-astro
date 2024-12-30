@@ -7,10 +7,10 @@ import {
   SiCanva,
 } from "react-icons/si";
 
-type ToolContainerProps = {
+interface ITool {
   icon?: React.ReactNode;
-  title: string;
-};
+  name: string;
+}
 
 const icon_mapping: Record<string, React.ReactNode> = {
   photoshop: <SiAdobephotoshop size={28} />,
@@ -29,7 +29,7 @@ const icon_mapping: Record<string, React.ReactNode> = {
   ),
 };
 
-const ToolContainer = ({ icon, title }: ToolContainerProps) => {
+const ToolContainer = ({ icon, name }: ITool) => {
   const [hovered, setHovered] = useState(false);
   return (
     <div
@@ -61,7 +61,7 @@ const ToolContainer = ({ icon, title }: ToolContainerProps) => {
             }}
             className="absolute -top-8 left-1/2 w-fit -translate-x-1/2 whitespace-pre rounded-md bg-neutral-100 px-2 py-0.5 text-sm text-neutral-900 opacity-20"
           >
-            {title}
+            {name}
           </motion.div>
         )}
       </AnimatePresence>
@@ -74,7 +74,7 @@ const Tools = ({ tools = [] }: { tools: { name: string; icon: string }[] }) => {
     <div className="flex gap-2">
       {tools.map(({ name, icon }) => {
         return (
-          <ToolContainer title={name} key={name} icon={icon_mapping[icon]} />
+          <ToolContainer name={name} key={name} icon={icon_mapping[icon]} />
         );
       })}
     </div>

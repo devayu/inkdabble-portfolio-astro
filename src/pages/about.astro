@@ -1,15 +1,8 @@
 ---
-import CreativeFields from "@components/creative-fields.astro";
-import Tools from "@components/ui/tools";
 import Layout from "@layouts/Layout.astro";
-import { getEntry } from "astro:content";
-
-const creativeFields = await getEntry("about", "creativeFields");
-const tools = await getEntry("about", "tools");
-console.log(creativeFields);
+import AboutSectionWrapper from "@components/about-section-wrapper.astro";
 ---
 
 <Layout>
-  <CreativeFields creativeFields={creativeFields?.data} />
-  <Tools tools={tools?.data} client:load />
+  <AboutSectionWrapper />
 </Layout>

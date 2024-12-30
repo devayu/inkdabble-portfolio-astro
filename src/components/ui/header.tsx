@@ -9,30 +9,30 @@ import { useState } from "react";
 const Header = ({ currentUrl }: { currentUrl: string }) => {
   const [isActive, setIsActive] = useState(false);
   return (
-    <motion.header
-      className="fixed top-0 z-50 box-border w-full p-4 uppercase"
-      variants={color}
-      initial="initial"
-      animate={isActive ? "open" : "closed"}
-    >
-      <div className="flex items-center justify-between">
+    <motion.header className="fixed top-0 z-50 box-border w-full p-4 uppercase">
+      <motion.div
+        variants={color}
+        initial="initial"
+        animate={isActive ? "open" : "closed"}
+        className="mx-auto flex max-w-[84rem] items-center justify-between p-2 backdrop-blur-md"
+      >
         <a href="/" className="text-3xl font-bold">
           I.
         </a>
-        <div
+        <button
           className="flex cursor-pointer items-center justify-center gap-2 uppercase"
           onClick={() => setIsActive(!isActive)}
         >
           <div className="relative w-[22px]">
             <div
               className={`${cn(
-                "absolute h-px w-full bg-black transition-all ease-[cubic-bezier(0.76,0,0.24,1)]",
+                "absolute h-px w-full bg-[var(--bg-primary)] transition-all ease-[cubic-bezier(0.76,0,0.24,1)]",
                 isActive ? "-rotate-45" : "top-[4px] bg-white",
               )}`}
             ></div>
             <div
               className={`${cn(
-                "absolute h-px w-full bg-black transition-all ease-[cubic-bezier(0.76,0,0.24,1)]",
+                "absolute h-px w-full bg-[var(--bg-primary)] transition-all ease-[cubic-bezier(0.76,0,0.24,1)]",
                 isActive ? "rotate-45" : "top-[-4px] bg-white",
               )}`}
             ></div>
@@ -49,11 +49,11 @@ const Header = ({ currentUrl }: { currentUrl: string }) => {
               close
             </motion.p>
           </div>
-        </div>
+        </button>
         <a href={`mailto:${EMAIL}`}>
           <CiMail size={28} />
         </a>
-      </div>
+      </motion.div>
       <AnimatePresence mode="wait">
         {isActive && <Nav currentUrl={currentUrl}></Nav>}
       </AnimatePresence>

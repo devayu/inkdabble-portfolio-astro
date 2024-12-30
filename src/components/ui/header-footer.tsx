@@ -3,8 +3,8 @@ import { motion } from "motion/react";
 
 const HeaderFooter = () => {
   return (
-    <div className="mt-10 flex items-center gap-4 text-sm uppercase">
-      <ul className="py-4 font-semibold">
+    <div className="mt-10 flex flex-col text-sm uppercase lg:flex-row lg:items-center lg:gap-4">
+      <ul className="font-semibold lg:py-4">
         <motion.li
           variants={translate}
           custom={[0.2, 0]}
@@ -17,7 +17,7 @@ const HeaderFooter = () => {
         </motion.li>
       </ul>
 
-      <ul className="py-4 font-semibold">
+      <ul className="py-4 font-normal opacity-50">
         <motion.li
           variants={translate}
           custom={[0.2, 0]}

@@ -5,7 +5,15 @@ import graphicCategory from "@assets/design-category.jpg";
 import fashionCategory from "@assets/fashion-category.jpg";
 import { getImage } from "astro:assets";
 import type { IOptimizedImages } from "src/types/types";
-
+import { getCldImageUrl } from "astro-cloudinary/helpers";
+const graphicCategoryUrl = getCldImageUrl({
+  src: "design-category_mykw75",
+  format: "auto",
+});
+const fashionCategoryUrl = getCldImageUrl({
+  src: "fashion-category_p2k6on",
+  format: "auto",
+});
 const unoptimizedImages = [
   {
     image: graphicCategory,
@@ -13,13 +21,15 @@ const unoptimizedImages = [
     subtitle: "graphic portfolio",
     path: "graphic",
     alt: "graphic portfolio",
+    url: graphicCategoryUrl,
   },
   {
     image: fashionCategory,
     name: "fashion",
     subtitle: "fashion portfolio",
     path: "fashion",
-    alt: "graphic portfolio",
+    alt: "fashion portfolio",
+    url: fashionCategoryUrl,
   },
 ];
 

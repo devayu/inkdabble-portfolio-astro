@@ -17,7 +17,7 @@ export const opacity = {
 
 export const color = {
   initial: {
-    backgroundColor: "black",
+    backgroundColor: "transparent",
     color: "white",
     opacity: 1,
   },
@@ -25,10 +25,10 @@ export const color = {
     backgroundColor: "white",
     transition,
     color: "black",
-    opacity: 0.9,
+    opacity: 0.95,
   },
   closed: {
-    backgroundColor: "black",
+    backgroundColor: "transparent",
     transition,
     color: "white",
     opacity: 1,
@@ -40,10 +40,15 @@ export const height = {
     height: 0,
   },
   enter: {
+    backgroundColor: "white",
+    color: "black",
+    opacity: 0.95,
     height: "auto",
     transition,
   },
   exit: {
+    backgroundColor: "#08090a",
+    color: "white",
     height: 0,
     transition,
   },

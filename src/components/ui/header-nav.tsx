@@ -11,9 +11,9 @@ const Nav = ({ currentUrl }: { currentUrl: string }) => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="mx-auto max-w-[84rem] overflow-hidden px-2"
+      className="overflow-hidden"
     >
-      <div className="m-0">
+      <div className="mx-auto mt-0 max-w-[84rem] px-4">
         <NavBody navlinks={NAV_LINKS} currentUrl={currentUrl}></NavBody>
         <HeaderFooter />
       </div>

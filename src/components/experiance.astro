@@ -11,9 +11,9 @@ interface Props {
 const { experiances = [] } = Astro.props;
 ---
 
-<div class="flex flex-col gap-4">
+<div class="mt-10 flex flex-col gap-4">
   <h1 class="text-2xl font-bold uppercase">Experiance</h1>
-  <div class="flex flex-col gap-8">
+  <div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
     {
       experiances.map(({ name, time, role, company }) => {
         return (

@@ -50,7 +50,7 @@ const Header = ({ currentUrl }: { currentUrl: string }) => {
             </motion.p>
           </div>
         </button>
-        <a href={`mailto:${EMAIL}`}>
+        <a href={`mailto:${EMAIL}`} aria-label={`Email- ${EMAIL}`}>
           <CiMail size={28} />
         </a>
       </motion.div>

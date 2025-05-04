@@ -6,5 +6,9 @@ const about = defineCollection({
     parser: (text) => JSON.parse(text),
   }),
 });
-
-export const collections = { about };
+const connect = defineCollection({
+  loader: file("src/data/connect.json", {
+    parser: (text) => JSON.parse(text),
+  }),
+});
+export const collections = { about, connect };

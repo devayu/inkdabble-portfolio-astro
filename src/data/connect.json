@@ -1,0 +1,24 @@
+{
+  "handles": [
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "handle": "https://www.linkedin.com/in/astha-maurya24"
+    },
+    {
+      "name": "Instagram",
+      "icon": "instagram",
+      "handle": "https://www.instagram.com/inkdabble/profilecard/?igsh=MTNraGZ5bDIxdXpjeA=="
+    },
+    {
+      "name": "X(Twitter)",
+      "icon": "twitter",
+      "handle": "https://x.com/astha52409306?t=vAAbzz0GDkl91jSo7zt4jA&s=08"
+    },
+    {
+      "name": "Behance",
+      "icon": "behance",
+      "handle": "https://www.behance.net/asthamaurya2"
+    }
+  ]
+}

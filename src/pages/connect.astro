@@ -1,0 +1,14 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getEntry } from "astro:content";
+import { SocialMediaCardContainer } from "@components/social-media-card";
+
+const socialMediaLinks = await getEntry("connect", "handles");
+---
+
+<Layout>
+  <SocialMediaCardContainer
+    socialMediaLinks={socialMediaLinks?.data}
+    client:load
+  />
+</Layout>

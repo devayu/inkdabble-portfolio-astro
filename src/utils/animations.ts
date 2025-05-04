@@ -25,7 +25,7 @@ export const color = {
     backgroundColor: "white",
     transition,
     color: "black",
-    opacity: 0.95,
+    opacity: 0.98,
   },
   closed: {
     backgroundColor: "transparent",
@@ -42,7 +42,7 @@ export const height = {
   enter: {
     backgroundColor: "white",
     color: "black",
-    opacity: 0.95,
+    opacity: 0.98,
     height: "auto",
     transition,
   },
@@ -135,5 +135,32 @@ export const categoryPage = {
     opacity: 1,
     scale: 1,
     transition: { ...transition, duration: 1 },
+  },
+};
+
+export const socialMediaTextAV = {
+  initial: {
+    y: "100px",
+  },
+  entering: {
+    y: 0,
+    transition: { ...transition, duration: 0.25 },
+  },
+  leaving: {
+    y: "100px",
+    transition: { ...transition, duration: 0.25 },
+  },
+};
+export const socialMediaCardContainerAV = {
+  initial: {
+    opacity: 1,
+  },
+  enter: {
+    opacity: 1,
+    transition: { ...transition, duration: 0.25 },
+  },
+  exit: {
+    opacity: 1,
+    transition: { ...transition, duration: 0.25 },
   },
 };

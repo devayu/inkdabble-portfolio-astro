@@ -11,6 +11,8 @@
   --color-white-alpha: rgba(var(--color-white), 0.2);
   --bg-primary: #08090a;
   --color-bg-translucent: hsla(0, 0%, 100%, 0.05);
+  --color-gray-rgb: 192, 202, 201;
+  --footer-border: rgba(var(--color-gray-rgb), 0.2);
 }
 
 @media (prefers-color-scheme: dark) {

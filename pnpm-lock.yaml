@@ -26,6 +26,9 @@ dependencies:
   '@fontsource-variable/montserrat':
     specifier: ^5.1.0
     version: 5.1.0
+  '@fontsource-variable/nunito-sans':
+    specifier: ^5.1.1
+    version: 5.1.1
   '@fontsource-variable/playfair-display':
     specifier: ^5.1.0
     version: 5.1.0
@@ -903,6 +906,10 @@ packages:
 
   /@fontsource-variable/montserrat@5.1.0:
     resolution: {integrity: sha512-1bloVBKJx/ABBmF+/VzhJZDLzaDNUxw/8Pt5AOgfKL6N3t1fAhwtJBb1gdqU7ABckSNLsKf572A5Inv9YneRug==}
+    dev: false
+
+  /@fontsource-variable/nunito-sans@5.1.1:
+    resolution: {integrity: sha512-BjtLqBKa+ZwxkZf7mAwZSEmX6VOC9Bvri1hXAAHPjkrwq6rXBG9THX3kl4hZQE+U0rT3febuSxSa84zAvzZUQg==}
     dev: false
 
   /@fontsource-variable/playfair-display@5.1.0:

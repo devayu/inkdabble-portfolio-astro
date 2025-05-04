@@ -1,3 +1,8 @@
-<div class="mx-auto min-h-screen max-w-[84rem] p-4 pt-[var(--header-height)]">
+---
+import SideHeader from "@components/side-header.astro";
+---
+
+<div class="mx-auto flex min-h-screen flex-col justify-between">
   <slot />
+  <SideHeader />
 </div>

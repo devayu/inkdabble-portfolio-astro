@@ -1,0 +1,13 @@
+---
+import { EMAIL } from "src/constants";
+import InkDabbleLogo from "../components/inkdabble-logo.astro";
+import { Mail } from "@lucide/astro";
+---
+
+<div class="z-50 flex items-center justify-between p-4">
+  <InkDabbleLogo />
+  <a href={`mailto:${EMAIL}`} aria-label={`Email- ${EMAIL}`}>
+    <Mail class="h-5 w-5 text-black" />
+    <!-- <p class="text-xl text-black">connect</p> -->
+  </a>
+</div>

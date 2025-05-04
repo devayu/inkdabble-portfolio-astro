@@ -5,6 +5,8 @@ import { cn } from "@utils/utils";
 import type { PropsWithChildren } from "react";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
+import { useState } from "react";
+import { ChevronLast, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface IImageLink {
   path: string;
@@ -21,13 +23,7 @@ interface IImageLink {
 
 const CategorySelector = ({ images = [] }: { images: IOptimizedImages[] }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.5 }}
-      className="w-full"
-    >
+    <motion.div className="h-full w-full">
       <ImageLinkContainer images={images}></ImageLinkContainer>
     </motion.div>
   );
@@ -47,47 +43,61 @@ const ImageLink = ({
 }: IImageLink) => {
   const cld = new Cloudinary({ cloud: { cloudName: "diyflwga5" } });
   const img = cld.image("design-category_mykw75").format("auto");
-  console.log(img);
 
   return (
-    <a href={path} className="w-full lg:w-[40%]">
+    <a href={path} className="">
       <motion.div
         className={`${cn("relative h-full w-full cursor-pointer", imageWrapperClassName)}`}
-        variants={categoryImageAV}
-        initial="initial"
-        whileHover={{ scale: 0.9 }}
       >
         <img
-          src={url}
+          src={optimizedImage?.src}
           alt={alt}
           width={width}
           height={height}
           className={`${cn("absolute h-full w-full", className)}`}
         />
-        <motion.div className="absolute inset-0 flex items-center justify-center">
-          <div className="absolute inset-0 h-full bg-black opacity-60"></div>
-          <span className="z-10 text-4xl font-bold uppercase tracking-wider text-white">
-            {subtitle}
-          </span>
-        </motion.div>
       </motion.div>
     </a>
   );
 };
 
 const ImageLinkContainer = ({ images }: { images: IOptimizedImages[] }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
   return (
-    <div className="flex flex-col items-center gap-8 p-4 lg:flex-row lg:justify-evenly lg:gap-4">
-      {images.map((image) => {
-        return (
+    <div className="relative flex items-center justify-center">
+      <div className="w-full max-w-3xl">
+        <div className="relative">
           <ImageLink
-            key={image.name}
-            {...image}
-            imageWrapperClassName="min-h-[40vh] lg:min-h-[80vh]"
-            className="object-cover"
-          ></ImageLink>
-        );
-      })}
+            key={images[currentIndex].name}
+            {...images[currentIndex]}
+            imageWrapperClassName="min-h-[80vh]"
+            className="object-cover object-center"
+          />
+
+          <button
+            onClick={handlePrevious}
+            className="absolute -bottom-2 left-1/4 z-20"
+          >
+            <ChevronLeft className="h-6 w-6 animate-pulse text-black" />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="absolute -bottom-2 right-1/4 z-20"
+          >
+            <ChevronRight className="h-6 w-6 animate-pulse text-black" />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

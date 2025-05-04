@@ -5,6 +5,7 @@ import "@fontsource-variable/montserrat";
 import "@fontsource-variable/nunito-sans";
 import { ClientRouter } from "astro:transitions";
 import "../base.css";
+import SideHeader from "@components/side-header.astro";
 ---
 
 <!doctype html>
@@ -18,7 +19,6 @@ import "../base.css";
     <ClientRouter />
   </head>
   <body>
-    <Header currentUrl={Astro.url.pathname} client:load />
     <BackgroundWrapper>
       <slot />
     </BackgroundWrapper>

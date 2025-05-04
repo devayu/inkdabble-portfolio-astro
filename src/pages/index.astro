@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import CategorySelector from "../components/ui/category-selector";
 import graphicCategory from "@assets/design-category.jpg";
 import fashionCategory from "@assets/fashion-category.jpg";
+import fashionPortfolio from "@assets/fashion-portfolio.png";
+import graphicPortfolio from "@assets/graphic-portfolio.png";
 import { getImage } from "astro:assets";
 import type { IOptimizedImages } from "src/types/types";
 import { getCldImageUrl } from "astro-cloudinary/helpers";
@@ -16,7 +18,7 @@ const fashionCategoryUrl = getCldImageUrl({
 });
 const unoptimizedImages = [
   {
-    image: graphicCategory,
+    image: graphicPortfolio,
     name: "graphic",
     subtitle: "graphic portfolio",
     path: "graphic",
@@ -24,7 +26,7 @@ const unoptimizedImages = [
     url: graphicCategoryUrl,
   },
   {
-    image: fashionCategory,
+    image: fashionPortfolio,
     name: "fashion",
     subtitle: "fashion portfolio",
     path: "fashion",

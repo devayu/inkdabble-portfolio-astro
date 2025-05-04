@@ -1,5 +1,5 @@
 ---
-// Import the CSS for the layout
+import Header from "@components/header.astro";
 import "../base.css";
 import "@fontsource-variable/playfair-display";
 import { ClientRouter } from "astro:transitions";
@@ -16,6 +16,7 @@ import { ClientRouter } from "astro:transitions";
     <ClientRouter />
   </head>
   <body>
+    <Header />
     <slot />
   </body><style>
     body {

@@ -47,3 +47,6 @@ body::after {
   filter: contrast(150%) brightness(150%);
   mix-blend-mode: multiply;
 }
+.categoryImage {
+  view-transition-name: categoryImage;
+}

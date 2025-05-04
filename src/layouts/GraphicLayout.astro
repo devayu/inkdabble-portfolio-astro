@@ -1,7 +1,6 @@
 ---
-// Import the CSS for the layout
+import Header from "@components/header.astro";
 import "../base.css";
-// Supports weights 400-700
 import "@fontsource-variable/cabin/wdth.css";
 import { ClientRouter } from "astro:transitions";
 ---
@@ -17,6 +16,7 @@ import { ClientRouter } from "astro:transitions";
     <ClientRouter />
   </head>
   <body>
+    <Header />
     <slot />
   </body><style>
     body {

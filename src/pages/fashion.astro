@@ -1,10 +1,26 @@
 ---
+import fashionPortfolio from "@assets/fashion-portfolio.png";
 import FashionLayout from "../layouts/FashionLayout.astro";
-import { AnimatedText } from "../components/AnimatedText";
+
+import { Image } from "astro:assets";
 ---
 
 <FashionLayout>
-  <div class="flex h-screen items-center justify-center">
-    <AnimatedText text="hello from fashion portfolio" client:load />
+  <div
+    class="flex h-screen items-center justify-center"
+    transition:name="graphic"
+  >
+    <div class="flex flex-col items-center">
+      <h1 class="text-5xl text-black">Fashion portfolio</h1>
+      <Image
+        src={fashionPortfolio}
+        alt="fashion portfolio"
+        format="webp"
+        class="object-cover"
+        height={50}
+        width={2000}
+        transition:name="categoryImage"
+      />
+    </div>
   </div>
 </FashionLayout>

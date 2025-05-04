@@ -1,21 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import CategorySelector from "../components/ui/category-selector";
-import graphicCategory from "@assets/design-category.jpg";
-import fashionCategory from "@assets/fashion-category.jpg";
+import Layout from "../layouts/Layout.astro";
+// import CategorySelector from "../components/ui/category-selector.astro";
 import fashionPortfolio from "@assets/fashion-portfolio.png";
 import graphicPortfolio from "@assets/graphic-portfolio.png";
 import { getImage } from "astro:assets";
 import type { IOptimizedImages } from "src/types/types";
-import { getCldImageUrl } from "astro-cloudinary/helpers";
-const graphicCategoryUrl = getCldImageUrl({
-  src: "design-category_mykw75",
-  format: "auto",
-});
-const fashionCategoryUrl = getCldImageUrl({
-  src: "fashion-category_p2k6on",
-  format: "auto",
-});
 const unoptimizedImages = [
   {
     image: graphicPortfolio,
@@ -23,7 +13,6 @@ const unoptimizedImages = [
     subtitle: "graphic portfolio",
     path: "graphic",
     alt: "graphic portfolio",
-    url: graphicCategoryUrl,
   },
   {
     image: fashionPortfolio,
@@ -31,7 +20,6 @@ const unoptimizedImages = [
     subtitle: "fashion portfolio",
     path: "fashion",
     alt: "fashion portfolio",
-    url: fashionCategoryUrl,
   },
 ];
 
@@ -40,7 +28,7 @@ const optimizedImages = await Promise.all(
     const oI = await getImage({
       src: image.image,
       format: "webp",
-      quality: 50,
+      quality: 100,
     });
     return { ...image, optimizedImage: oI };
   }),
@@ -48,5 +36,5 @@ const optimizedImages = await Promise.all(
 ---
 
 <Layout>
-  <CategorySelector client:load images={optimizedImages} />
+  <CategorySelector client:only images={optimizedImages} />
 </Layout>

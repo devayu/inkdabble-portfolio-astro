@@ -13,8 +13,8 @@ export default defineConfig({
   // },
   integrations: [react(), tailwind({ applyBaseStyles: false }), icon()],
 
-  adapter: vercel({
-    imageService: true,
-  }),
+  // adapter: vercel({
+  //   imageService: true,
+  // }),
   trailingSlash: "never",
 });

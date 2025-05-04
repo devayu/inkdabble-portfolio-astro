@@ -1,10 +1,26 @@
 ---
+import { motion } from "motion/react";
 import GraphicLayout from "../layouts/GraphicLayout.astro";
-import Layout from "../layouts/Layout.astro";
+import graphicPortfolio from "@assets/graphic-portfolio.png";
+import { Image } from "astro:assets";
 ---
 
 <GraphicLayout>
-  <div class="flex h-screen items-center justify-center">
-    <h1 class="text-5xl">hello from graphics portfolio</h1>
+  <div
+    class="flex h-screen items-center justify-center"
+    transition:name="graphic"
+  >
+    <div class="flex flex-col items-center">
+      <h1 class="text-5xl text-black">Graphics portfolio</h1>
+      <Image
+        src={graphicPortfolio}
+        alt="graphic portfolio"
+        format="webp"
+        class="object-fill"
+        height={50}
+        width={2000}
+        transition:name="categoryImage"
+      />
+    </div>
   </div>
 </GraphicLayout>

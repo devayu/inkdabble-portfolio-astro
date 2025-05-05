@@ -1,5 +1,5 @@
 ---
-import BackgroundWrapper from "@components/background-wrapper.astro";
+import Header from "@components/header.astro";
 import "@fontsource-variable/montserrat";
 import "@fontsource-variable/nunito-sans";
 import { ClientRouter } from "astro:transitions";
@@ -16,10 +16,11 @@ import "../base.css";
     <title>Astha Maurya</title>
     <ClientRouter />
   </head>
-  <body class="mx-auto max-w-screen-2xl overflow-hidden">
-    <BackgroundWrapper>
+  <body class="mx-auto max-w-screen-2xl">
+    <div class="mx-auto flex min-h-screen flex-col justify-between">
       <slot />
-    </BackgroundWrapper>
+      <Header />
+    </div>
   </body><style>
     body {
       font-family: "Montserrat Variable", sans-serif;

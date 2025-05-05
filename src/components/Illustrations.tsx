@@ -37,15 +37,14 @@ export const Illustrations = ({ images }: { images: IOptimizedImages[] }) => {
           </div>
         </div>
 
-        <div className="md:w-1/2">
-          <div className="grid grid-cols-3 gap-8">
+        <div className="w-full overflow-x-auto md:w-1/2 md:overflow-x-scroll">
+          <div className="grid min-w-max grid-flow-col gap-4 md:min-w-full md:grid-flow-row md:grid-cols-3 md:gap-8">
             {images.map((image, index) => (
               <div
                 key={index}
                 className={cn(
-                  "aspect-[3/4] cursor-pointer",
-                  selectedImage === index &&
-                    "outline outline-2 outline-[#4E526F]",
+                  "aspect-[3/4] w-[200px] cursor-pointer md:w-auto",
+                  selectedImage === index && "",
                 )}
                 onClick={() => setSelectedImage(index)}
               >
@@ -55,6 +54,14 @@ export const Illustrations = ({ images }: { images: IOptimizedImages[] }) => {
                   alt={image.alt}
                   className="h-full w-full object-cover"
                 />
+                <div
+                  className={cn(
+                    "text-center leading-none transition-transform duration-300 ease-in-out",
+                    selectedImage === index ? "text-black" : "text-transparent",
+                  )}
+                >
+                  -
+                </div>
               </div>
             ))}
           </div>

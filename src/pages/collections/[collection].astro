@@ -1,0 +1,48 @@
+---
+import FashionLayout from "@layouts/FashionLayout.astro";
+import { cn } from "@utils/utils";
+import { Image } from "astro:assets";
+export function getStaticPaths() {
+  return [
+    { params: { collection: "savera" } },
+    { params: { collection: "reform" } },
+    { params: { collection: "flawed-beauty" } },
+    { params: { collection: "print-design" } },
+    { params: { collection: "clo" } },
+    { params: { collection: "illustrations" } },
+  ];
+}
+
+const { collection } = Astro.params;
+const getImageFromCollection = (collection: string) => {
+  const image = import.meta.glob("/src/assets/*.(jpeg|png)", {
+    eager: true,
+  });
+  const pngPath = `/src/assets/${collection}.png`;
+  const jpegPath = `/src/assets/${collection}.jpeg`;
+  return pngPath in image || jpegPath in image
+    ? (
+        image[pngPath in image ? pngPath : jpegPath] as {
+          default: ImageMetadata;
+        }
+      ).default
+    : undefined;
+};
+const imageToShow = getImageFromCollection(collection);
+console.log(getImageFromCollection(collection));
+---
+
+<FashionLayout>
+  <div class="aspect-[3/4] overflow-hidden">
+    {
+      imageToShow && (
+        <Image
+          src={imageToShow}
+          alt={collection}
+          class={cn("h-full w-full object-none object-top")}
+          transition:name="collection-image"
+        />
+      )
+    }
+  </div>
+</FashionLayout>

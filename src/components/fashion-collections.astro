@@ -1,0 +1,92 @@
+---
+import savera from "@assets/savera.png";
+import flawed from "@assets/flawed-beauty.jpeg";
+import clo from "@assets/clo.jpeg";
+import refromInStyle from "@assets/reform.jpeg";
+import patternDress from "@assets/print-design.jpeg";
+import illustrations from "@assets/illustrations.png";
+import { Image } from "astro:assets";
+import { cn } from "@utils/utils";
+import { getImage } from "astro:assets";
+const collections = [
+  {
+    image: savera,
+    title: "Saanjh se Sawera",
+    path: "/collections/savera",
+    position: "bottom",
+  },
+  {
+    image: refromInStyle,
+    title: "Reform in Style",
+    path: "/collections/reform",
+  },
+
+  {
+    image: flawed,
+    title: "Flawed Beauty",
+    path: "/collections/flawed-beauty",
+  },
+  {
+    image: patternDress,
+    title: "Print Design",
+    path: "/collections/print-design",
+  },
+  {
+    image: clo,
+    title: "CLO 3D",
+    path: "/collections/clo",
+  },
+
+  {
+    image: illustrations,
+    title: "Illustrations",
+    path: "/collections/illustrations",
+    position: "center",
+  },
+];
+const optimizedImages = await Promise.all(
+  collections.map(async (image) => {
+    const oI = await getImage({
+      src: image.image,
+      format: "webp",
+      quality: 50,
+    });
+    return { ...image, optimizedImage: oI };
+  }),
+);
+---
+
+<div
+  class="flex min-h-screen flex-col items-center justify-center py-16 text-black"
+>
+  <h2 class="mb-16 text-center text-sm uppercase tracking-[0.2em]">
+    Collections
+  </h2>
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="grid grid-cols-1 gap-20 sm:grid-cols-2 md:grid-cols-3">
+      {
+        optimizedImages.map((collection, index) => (
+          <div class="flex flex-col gap-2">
+            <div class="aspect-[3/4] overflow-hidden">
+              <a href={collection.path}>
+                <Image
+                  src={collection.image}
+                  alt={collection.title}
+                  transition:name={`collection-image_${index}`}
+                  class={cn("h-full w-full object-none")}
+                  style={{
+                    objectPosition: `${collection.position || "top"}`,
+                  }}
+                />
+              </a>
+            </div>
+            <div class="flex justify-between text-xs text-black">
+              <p>{`0${index + 1}`}</p>
+              <p class="text-xs text-black">{collection.title}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

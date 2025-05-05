@@ -86,7 +86,7 @@ const ImageLinkContainer = ({ images }: { images: IOptimizedImages[] }) => {
 
   return (
     <div className="relative flex items-center justify-center">
-      <div className="w-full max-w-3xl">
+      <div className="w-full max-w-md">
         <div className="relative">
           <AnimatePresence mode="wait" initial={false} custom={direction}>
             <ImageLink
@@ -94,7 +94,7 @@ const ImageLinkContainer = ({ images }: { images: IOptimizedImages[] }) => {
               {...images[currentIndex]}
               direction={direction}
               imageWrapperClassName="min-h-[80vh]"
-              className="object-cover object-center"
+              className="object-cover object-center lg:object-none"
             />
           </AnimatePresence>
 
@@ -102,7 +102,7 @@ const ImageLinkContainer = ({ images }: { images: IOptimizedImages[] }) => {
             exit={{ opacity: 0 }}
             transition={transition}
             onClick={handlePrevious}
-            className="absolute -bottom-2 left-1/4 z-20"
+            className="absolute -bottom-[5%] left-1/4 z-20"
           >
             <ChevronLeft className="h-6 w-6 text-black" />
           </motion.button>
@@ -111,7 +111,7 @@ const ImageLinkContainer = ({ images }: { images: IOptimizedImages[] }) => {
             exit={{ opacity: 0 }}
             transition={transition}
             onClick={handleNext}
-            className="absolute -bottom-2 right-1/4 z-20"
+            className="absolute -bottom-[5%] right-1/4 z-20"
           >
             <ChevronRight className="h-6 w-6 text-black" />
           </motion.button>

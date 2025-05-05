@@ -1,0 +1,40 @@
+---
+import fashionHero from "@assets/fashion-hero.png";
+import fashionHeroPortrait from "@assets/fashion-hero-portrait.png";
+
+import { Image } from "astro:assets";
+---
+
+<div class="mt-5 flex min-h-full flex-col items-center gap-4">
+  <span class="flex gap-6 leading-none md:gap-8">
+    {
+      "Fashion".split("").map((letter, i) => {
+        return (
+          <span
+            class="text-5xl uppercase leading-none text-[#4E526F] md:text-9xl lg:text-[20rem]"
+            transition:animate="fade"
+          >
+            {letter}
+          </span>
+        );
+      })
+    }
+  </span>
+  <div class="aspect-[3/4] overflow-hidden">
+    <Image
+      src={fashionHeroPortrait}
+      alt="fashion portfolio"
+      format="webp"
+      class="object-middle block object-none md:hidden"
+      transition:name="categoryImage"
+    />
+  </div>
+
+  <Image
+    src={fashionHero}
+    alt="fashion portfolio"
+    format="webp"
+    class="hidden object-contain object-top md:block"
+    transition:name="categoryImage"
+  />
+</div>

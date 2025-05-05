@@ -1,48 +1,165 @@
 ---
 import FashionLayout from "@layouts/FashionLayout.astro";
-import { cn } from "@utils/utils";
-import { Image } from "astro:assets";
+import { fade } from "astro:transitions";
+const WORKER_PATH = "//unpkg.com/pdfjs-dist@5.2.133/build/pdf.worker.min.mjs";
 export function getStaticPaths() {
   return [
-    { params: { collection: "savera" } },
-    { params: { collection: "reform" } },
-    { params: { collection: "flawed-beauty" } },
-    { params: { collection: "print-design" } },
-    { params: { collection: "clo" } },
-    { params: { collection: "illustrations" } },
+    { params: { collection: "savera" }, props: { title: "Saanjh se Sawera" } },
+    {
+      params: { collection: "reform" },
+      props: { title: "Reform in Style" },
+    },
+    {
+      params: { collection: "flawed-beauty" },
+      props: { title: "Flawed Beauty" },
+    },
+    {
+      params: { collection: "print-design" },
+      props: { title: "Print Design" },
+    },
+    { params: { collection: "clo" }, props: { title: "CLO" } },
+    {
+      params: { collection: "illustrations" },
+      props: { title: "Illustrations" },
+    },
   ];
 }
 
 const { collection } = Astro.params;
-const getImageFromCollection = (collection: string) => {
-  const image = import.meta.glob("/src/assets/*.(jpeg|png)", {
+const { title } = Astro.props;
+
+const getFileFromCollection = (collection: string) => {
+  const files = import.meta.glob("/src/assets/*.pdf", {
     eager: true,
   });
-  const pngPath = `/src/assets/${collection}.png`;
-  const jpegPath = `/src/assets/${collection}.jpeg`;
-  return pngPath in image || jpegPath in image
-    ? (
-        image[pngPath in image ? pngPath : jpegPath] as {
-          default: ImageMetadata;
-        }
-      ).default
-    : undefined;
+  const pdfPath = `/src/assets/${collection}.pdf`;
+
+  if (pdfPath in files) {
+    return {
+      file: (files[pdfPath] as { default: string }).default,
+      type: "pdf",
+    };
+  }
+
+  return undefined;
 };
-const imageToShow = getImageFromCollection(collection);
-console.log(getImageFromCollection(collection));
+
+const fileToShow = getFileFromCollection(collection);
 ---
 
 <FashionLayout>
-  <div class="aspect-[3/4] overflow-hidden">
-    {
-      imageToShow && (
-        <Image
-          src={imageToShow}
-          alt={collection}
-          class={cn("h-full w-full object-none object-top")}
-          transition:name="collection-image"
-        />
-      )
+  <main>
+    <h1
+      class="mb-4 text-center text-4xl font-bold text-black"
+      transition:name={`collection-name_${title}`}
+    >
+      {title}
+    </h1>
+    <pdf-viewer data-pdf-path={fileToShow?.file} data-worker-path={WORKER_PATH}>
+    </pdf-viewer>
+  </main>
+
+  <script
+    is:inline
+    src="https://unpkg.com/pdfjs-dist@5.2.133/build/pdf.min.mjs"
+    type="module"></script>
+
+  <script>
+    //@ts-ignore
+    import type { PDFDocumentLoadingTask } from "pdfjs-dist";
+
+    declare global {
+      interface Window {
+        pdfjsLib?: any;
+      }
     }
-  </div>
+
+    class PDFViewer extends HTMLElement {
+      pdfPath;
+      workerPath;
+      loadingTask: PDFDocumentLoadingTask | null = null;
+      container;
+
+      constructor() {
+        super();
+        this.attachShadow({ mode: "open" });
+        this.pdfPath = this.getAttribute("data-pdf-path");
+        this.workerPath = this.getAttribute("data-worker-path");
+        this.container = document.createElement("div");
+        this.container.style.display = "flex";
+        this.container.style.flexDirection = "column";
+        this.container.style.gap = "20px";
+        this.container.style.padding = "20px";
+
+        this.shadowRoot?.append(this.container);
+      }
+
+      async renderPage(pdfDocument: any, pageNum: number) {
+        const page = await pdfDocument.getPage(pageNum);
+        const viewport = page.getViewport({ scale: 1.5 });
+
+        const canvas = document.createElement("canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "auto";
+        const context = canvas.getContext("2d");
+
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport,
+        };
+
+        await page.render(renderContext).promise;
+        this.container.appendChild(canvas);
+      }
+
+      async load() {
+        if (!this.loadingTask) return;
+
+        const pdfDocument = await this.loadingTask.promise;
+        const numPages = pdfDocument.numPages;
+
+        // Render all pages
+        for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+          await this.renderPage(pdfDocument, pageNum);
+        }
+      }
+
+      initialize() {
+        if (!this.pdfPath || !this.workerPath || !window.pdfjsLib) return;
+
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = this.workerPath;
+        this.loadingTask = window.pdfjsLib.getDocument(this.pdfPath);
+        this.load();
+      }
+
+      connectedCallback() {
+        if (window.pdfjsLib) {
+          this.initialize();
+        } else {
+          // If pdfjsLib is not loaded yet, wait for the script to load
+          const checkLibInterval = setInterval(() => {
+            if (window.pdfjsLib) {
+              clearInterval(checkLibInterval);
+              this.initialize();
+            }
+          }, 100);
+        }
+      }
+
+      disconnectedCallback() {
+        // Clean up any resources if needed
+      }
+    }
+
+    customElements.define("pdf-viewer", PDFViewer);
+  </script>
 </FashionLayout>
+<script>
+  // transition:name={`collection-name_${collection.title}`}
+  document.querySelectorAll("main").forEach((el) => {
+    el.style.viewTransitionName = "";
+  });
+</script>

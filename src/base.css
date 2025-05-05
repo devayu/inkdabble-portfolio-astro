@@ -53,3 +53,9 @@ body::after {
 .categoryImage {
   view-transition-name: categoryImage;
 }
+.illustrationText {
+  view-transition-name: collection-name__Illustrations;
+}
+.illustrationImage {
+  view-transition-name: illustrationImage;
+}

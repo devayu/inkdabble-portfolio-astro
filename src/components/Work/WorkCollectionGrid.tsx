@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import ScrambleText from "@components/ScrambleTextWrapper";
+import { StaggerText } from "@components/StaggerText";
 gsap.registerPlugin(useGSAP);
 export const WorkCollectionGrid = ({
   collections,
@@ -97,9 +99,11 @@ export const WorkCollectionGrid = ({
       className="relative my-auto flex h-screen w-full flex-col items-center md:justify-center md:gap-4"
       ref={containerRef}
     >
-      <h1 className="p-4 text-center text-2xl font-extrabold uppercase md:text-7xl">
-        Collections
-      </h1>
+      <ScrambleText>
+        <h1 className="p-4 text-center text-2xl font-extrabold uppercase md:text-7xl">
+          Collections
+        </h1>
+      </ScrambleText>
       <div
         className="relative flex h-max w-[90%] grid-cols-5 flex-col border-[1px] border-r-0 border-[#1A2A25] md:h-[60%]"
         ref={gridContainerRef}
@@ -112,9 +116,11 @@ export const WorkCollectionGrid = ({
                 key={index}
                 className="grid-item flex h-full w-full flex-1 items-center justify-center border-b-[1px] border-r-[1px] border-[#1A2A25] p-16"
               >
-                <p className="text-center text-2xl font-semibold">
-                  {collection.title}
-                </p>
+                <StaggerText>
+                  <p className="text-center text-2xl font-semibold">
+                    {collection.title}
+                  </p>
+                </StaggerText>
               </a>
             );
           })}
@@ -127,14 +133,17 @@ export const WorkCollectionGrid = ({
                 href={collection.href}
                 className="grid-item flex h-full w-full flex-1 items-center justify-center border-b-[1px] border-r-[1px] border-[#1A2A25] p-16 md:border-b-0"
               >
-                <p className="text-center text-2xl font-semibold">
-                  {collection.title}
-                </p>
+                <StaggerText animateOnScroll={true}>
+                  <p className="text-center text-2xl font-semibold">
+                    {collection.title}
+                  </p>
+                </StaggerText>
               </a>
             );
           })}
         </div>
       </div>
+      <div className="block p-4 md:hidden"></div>
       <div
         ref={highlightRef}
         className="highlight pointer-events-none absolute left-0 top-0 -z-10 hidden bg-[#1be9c2] transition-all md:block"

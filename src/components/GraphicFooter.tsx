@@ -96,7 +96,7 @@ export const GraphicFooter = () => {
 
   return (
     <div className="flex h-full flex-col md:flex-row" ref={containerRef}>
-      <div className="flex items-center gap-4 border-[1px] border-l-0 border-[#1A2A25] p-8 text-6xl font-extrabold md:w-[67vw]">
+      <div className="flex items-center gap-4 border-[1px] border-l-0 border-[#1A2A25] p-8 text-4xl font-extrabold md:w-[67vw] md:text-6xl">
         <p>Graphic Designer</p>
         <div className="icon-plus w-embed hidden md:block">
           <svg

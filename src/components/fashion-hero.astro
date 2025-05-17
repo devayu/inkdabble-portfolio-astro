@@ -10,10 +10,7 @@ import { Image } from "astro:assets";
     {
       "Fashion".split("").map((letter, i) => {
         return (
-          <span
-            class="text-5xl uppercase leading-none text-[#4E526F] md:text-9xl lg:text-[20rem]"
-            transition:animate="fade"
-          >
+          <span class="text-5xl uppercase leading-none text-[var(--text-fashion)] md:text-9xl lg:text-[20rem]">
             {letter}
           </span>
         );

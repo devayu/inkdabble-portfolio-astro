@@ -1,0 +1,235 @@
+---
+import SlidingImages from "@components/sliding-images.astro";
+import FashionLayout from "@layouts/FashionLayout.astro";
+import motifDesign from "@assets/printboard.png";
+import motifDesignCover from "@assets/print-design.jpg";
+import tshirtPrint from "@assets/graphic-print.png";
+import tshirtPrintCover from "@assets/graphic.png";
+import elephant from "@assets/elephant.png";
+import elephantCover from "@assets/cloth-print.png";
+import lotus from "@assets/wild-whispers.jpg";
+import lotusCover from "@assets/wild-whispers.jpg";
+// import lotusCover from "@assets/bag-print.jpg";
+import type { IOptimizedImages } from "src/types/types";
+import { getImage } from "astro:assets";
+
+import { cn } from "@utils/utils";
+
+const images = [
+  {
+    image: motifDesign,
+    cover: motifDesignCover,
+    name: "Dress Print",
+    alt: "Dress Print",
+    color: "#1c4220", // Ecru color
+    colorName: "Pantone 2411C", // Name of the color in English
+    position: "center",
+  },
+  {
+    image: tshirtPrint,
+    cover: tshirtPrintCover,
+    name: "Tshirt Print",
+    alt: "Tshirt Print",
+    color: "#FFFFFF", // Alabaster color
+    colorName: "Alabaster", // Name of the color in English
+    position: "center",
+  },
+  {
+    image: elephant,
+    cover: elephantCover,
+    name: "Elephant processon majesty",
+    alt: "Elephant processon majesty",
+    color: "#4A5D23", // Field Green color
+    colorName: "Field Green", // Name of the color in English
+    position: "left",
+  },
+  {
+    image: lotus,
+    cover: lotusCover,
+    name: "Lotus Symphony",
+    alt: "Lotus Symphony",
+    color: "#FFFDD0", // Baby Powder color
+    colorName: "Baby Powder", // Name of the color in English
+    position: "left",
+  },
+];
+
+const optimizedImages = await Promise.all(
+  images.map(async (image) => {
+    const oI = await getImage({
+      src: image.image,
+      format: "webp",
+      quality: 100,
+    });
+    const oCoverImage = await getImage({
+      src: image.cover,
+      format: "webp",
+      quality: 50,
+    });
+    return { ...image, image: oI, cover: oCoverImage };
+  }),
+);
+---
+
+<FashionLayout>
+  <div
+    class="mx-auto flex max-w-5xl flex-col items-center justify-center gap-4 p-8"
+  >
+    <h1
+      class={cn(
+        "text-sm font-light uppercase tracking-wider text-[#4E526F]",
+        "illustrationText text-center",
+      )}
+    >
+      Print Design
+    </h1>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      {
+        optimizedImages.map((image, index) => (
+          <div class="flex justify-between gap-2">
+            {index === 0 || index === 3 ? (
+              <>
+                <div class="w-1/2 outline outline-2 outline-[#E5E5E5]">
+                  <div class="flex h-full w-full justify-between p-4">
+                    <div>
+                      <div
+                        class="aspect-square h-1/2"
+                        style={`background-color: ${image.color}`}
+                      />
+                      <p class="text-sm uppercase text-[var(--text-fashion)]">
+                        {image.colorName}
+                      </p>
+                      <p class="text-sm uppercase text-[var(--text-fashion)]">
+                        {image.color}
+                      </p>
+                    </div>
+                    <div class="text-xs leading-none text-[var(--text-fashion)]">
+                      {(index + 1).toString().padStart(3, "0")}
+                    </div>
+                  </div>
+                </div>
+                <div class="aspect-[3/4] w-1/2">
+                  <img
+                    src={image.cover.src}
+                    alt={image.alt}
+                    data-image-index={index}
+                    data-main-image={image.image.src}
+                    class={cn("h-full w-full cursor-pointer object-none")}
+                    style={{
+                      objectPosition: image.position ? `${image.position}` : "",
+                    }}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div class="aspect-[3/4] w-1/2">
+                  <img
+                    src={image.cover.src}
+                    alt={image.alt}
+                    data-image-index={index}
+                    data-main-image={image.image.src}
+                    class={cn("h-full cursor-pointer object-none")}
+                    style={{
+                      objectPosition: image.position ? `${image.position}` : "",
+                    }}
+                  />
+                </div>
+                <div class="w-1/2 outline outline-2 outline-[#E5E5E5]">
+                  <div class="flex h-full w-full justify-between p-4">
+                    <div>
+                      <div
+                        class="aspect-square h-1/2"
+                        style={`background-color: ${image.color}`}
+                      />
+                      <p class="text-sm uppercase text-[var(--text-fashion)]">
+                        {image.colorName}
+                      </p>
+                      <p class="text-sm uppercase text-[var(--text-fashion)]">
+                        {image.color}
+                      </p>
+                    </div>
+                    <div class="text-xs leading-none text-[#666666]">
+                      {(index + 1).toString().padStart(3, "0")}
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div
+    id="imagePopover"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
+  >
+    <div class="relative max-h-[90vh] max-w-[90vw]">
+      <button
+        id="closePopover"
+        class="absolute -right-4 -top-4 flex h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-black"
+      >
+        ×
+      </button>
+      <img
+        id="popoverImage"
+        src=""
+        alt=""
+        class="max-h-[90vh] max-w-[90vw] object-contain"
+      />
+    </div>
+  </div>
+</FashionLayout>
+<script>
+  // Initialize popover functionality
+  const popover = document.getElementById("imagePopover");
+  const popoverImage = document.getElementById(
+    "popoverImage",
+  ) as HTMLImageElement;
+  const closeButton = document.getElementById("closePopover");
+  const images = document.querySelectorAll("img[data-image-index]");
+
+  // Show popover on image click
+  images.forEach((img) => {
+    img.addEventListener("click", () => {
+      if (!popoverImage || !popover) {
+        return;
+      }
+      const imgElement = img as HTMLImageElement;
+      popoverImage.src = imgElement.dataset.mainImage || imgElement.src;
+      popoverImage.alt = imgElement.alt;
+      popover.classList.remove("hidden");
+      popover.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  // Close popover on button click
+  closeButton?.addEventListener("click", () => {
+    if (!popover) {
+      return;
+    }
+    popover.classList.add("hidden");
+    popover.classList.remove("flex");
+    document.body.style.overflow = "";
+  });
+
+  // Close popover on background click
+  popover?.addEventListener("click", (e) => {
+    if (e.target === popover) {
+      popover.classList.add("hidden");
+      popover.classList.remove("flex");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Close popover on escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !popover?.classList.contains("hidden")) {
+      popover?.classList.add("hidden");
+      popover?.classList.remove("flex");
+      document.body.style.overflow = "";
+    }
+  });
+</script>

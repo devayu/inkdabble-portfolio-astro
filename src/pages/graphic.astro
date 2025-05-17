@@ -1,66 +1,14 @@
 ---
-import { motion } from "motion/react";
-import GraphicLayout from "../layouts/GraphicLayout.astro";
-import graphicHero from "@assets/graphic-hero.png";
-import graphicPortfolio from "@assets/graphic-portfolio.png";
-import { Image } from "astro:assets";
+import { GraphicFooter } from "@components/GraphicFooter";
+import { GraphicHome } from "@components/GraphicHome";
+import { GraphicLoader } from "@components/GraphicLoader";
+import GraphicLayout from "@layouts/GraphicLayout.astro";
 ---
 
 <GraphicLayout>
-  <!-- <div
-    class="flex min-h-[calc(100vh-var(--header-height))] items-end justify-center"
-  >
-    <div class="flex flex-col items-center">
-      <h1
-        class="text-[20rem] uppercase leading-none tracking-widest text-black"
-        transition:animate="fade"
-      >
-        Graphic
-      </h1>
-      <Image
-        src={graphicPortfolio}
-        alt="graphic portfolio"
-        format="webp"
-        class="object-fill"
-        height={100}
-        width={2000}
-        transition:name="categoryImage"
-      />
-    </div>
-  </div> -->
-  <div
-    class="flex min-h-[calc(100vh-var(--header-height))] justify-center md:items-end"
-  >
-    <div class="mt-5 flex min-h-full flex-col items-center gap-4">
-      <span class="flex gap-5 leading-none">
-        {
-          "Graphic".split("").map((letter, i) => {
-            return (
-              <span
-                class="text-5xl uppercase leading-none text-black md:text-9xl lg:text-[20rem]"
-                transition:animate="fade"
-              >
-                {letter}
-              </span>
-            );
-          })
-        }
-      </span>
-      <Image
-        src={graphicPortfolio}
-        alt="graphic portfolio"
-        format="webp"
-        class="object-middle block object-none md:hidden"
-        transition:name="categoryImage"
-      />
-
-      <Image
-        src={graphicHero}
-        alt="graphic portfolio"
-        format="webp"
-        class="hidden object-contain object-top md:block"
-        transition:name="categoryImage"
-      />
-    </div>
+  <div class="h-full w-full">
+    <GraphicLoader client:only />
+    <GraphicHome client:only />
+    <GraphicFooter client:only />
   </div>
 </GraphicLayout>

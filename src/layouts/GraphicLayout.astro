@@ -2,7 +2,11 @@
 import Header from "@components/header.astro";
 import "../base.css";
 import "@fontsource-variable/cabin/wdth.css";
+// Supports weights 400-800
+import "@fontsource-variable/syne";
+import "@fontsource-variable/unbounded";
 import { ClientRouter } from "astro:transitions";
+import { GraphicHeader } from "@components/GraphicHeader";
 ---
 
 <!doctype html>
@@ -15,13 +19,15 @@ import { ClientRouter } from "astro:transitions";
     <title>Graphics portfolio</title>
     <ClientRouter />
   </head>
-  <body class="min-h-screen">
-    <Header />
+  <body class="mx-auto min-h-screen max-w-screen-2xl">
+    <GraphicHeader client:only />
     <slot />
   </body><style>
     body {
-      font-family: "Cabin", sans-serif;
-      /* background-color: #296d5e; */
+      font-family: "Syne Variable", sans-serif;
+      color: #c8d4cf;
+      /* font-family: "Unbounded Variable", sans-serif; */
+      background-color: #020e0a;
     }
   </style>
 </html>

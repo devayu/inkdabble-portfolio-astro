@@ -20,7 +20,27 @@ import { ClientRouter } from "astro:transitions";
     <slot />
   </body><style>
     body {
-      font-family: "Playfair Display Variable", serif;
+      font-family: "Merriweather Variable", serif;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    body::before {
+      background-image: var(--noise-texture);
+      opacity: 0.7;
+    }
+
+    body::after {
+      background-image: var(--noise-texture);
+      opacity: 0.3;
+      filter: contrast(150%) brightness(150%);
+      mix-blend-mode: multiply;
     }
   </style>
 </html>

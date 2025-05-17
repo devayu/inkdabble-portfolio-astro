@@ -23,6 +23,9 @@ dependencies:
   '@fontsource-variable/cabin':
     specifier: ^5.1.0
     version: 5.1.0
+  '@fontsource-variable/merriweather':
+    specifier: ^5.2.2
+    version: 5.2.2
   '@fontsource-variable/montserrat':
     specifier: ^5.1.0
     version: 5.1.0
@@ -32,9 +35,24 @@ dependencies:
   '@fontsource-variable/playfair-display':
     specifier: ^5.1.0
     version: 5.1.0
+  '@fontsource-variable/syne':
+    specifier: ^5.2.5
+    version: 5.2.5
+  '@fontsource-variable/teko':
+    specifier: ^5.2.6
+    version: 5.2.6
+  '@fontsource-variable/unbounded':
+    specifier: ^5.2.5
+    version: 5.2.5
+  '@gsap/react':
+    specifier: ^2.1.2
+    version: 2.1.2(gsap@3.13.0)(react@19.0.0)
   '@lucide/astro':
     specifier: ^0.507.0
     version: 0.507.0(astro@5.1.1)
+  '@tabler/icons-react':
+    specifier: ^3.31.0
+    version: 3.31.0(react@19.0.0)
   '@types/greensock':
     specifier: ^1.15.32
     version: 1.15.32
@@ -928,6 +946,10 @@ packages:
     resolution: {integrity: sha512-m5hWLGbMLz/139bHWh6nljCKgP+EKi/mLmzQDhrMebn5O1h5nEAFW7JZE7Z3Tw166RPEtpERG6ZXIWMHRs9vKA==}
     dev: false
 
+  /@fontsource-variable/merriweather@5.2.2:
+    resolution: {integrity: sha512-DZjuulo723T3TTf9ibAuWA2y1jsLlA+zDSA6j5AdnJF5rvpjlE9B/IRFiHt5rmKMdAS8tHF5GTEfQ9dwBRMtow==}
+    dev: false
+
   /@fontsource-variable/montserrat@5.1.0:
     resolution: {integrity: sha512-1bloVBKJx/ABBmF+/VzhJZDLzaDNUxw/8Pt5AOgfKL6N3t1fAhwtJBb1gdqU7ABckSNLsKf572A5Inv9YneRug==}
     dev: false
@@ -938,6 +960,28 @@ packages:
 
   /@fontsource-variable/playfair-display@5.1.0:
     resolution: {integrity: sha512-51UJAHznXiGkchEOT5AYFuIy9N9m1JE7YxcdOtY0H4SKgzK9YYGKpeCXv3dz2e1gAd+BP2TyR0QXNnVjgeCbgw==}
+    dev: false
+
+  /@fontsource-variable/syne@5.2.5:
+    resolution: {integrity: sha512-Ooue1Z8ToVybeYOYXgd/Loz0ZIsWYOy/Dbvo9X4zBRTqdcLAe0yEiUGTlrGNmDefAsLoEHEwNd0gvCFRakj0uA==}
+    dev: false
+
+  /@fontsource-variable/teko@5.2.6:
+    resolution: {integrity: sha512-B3msEF+ewHWSxXBoso9VHCfIwXco9hPrE3fe449W9MKbpUqcCf7mBZYzb+O9VIbQfQFLLwhXpL1enO0StX6ydg==}
+    dev: false
+
+  /@fontsource-variable/unbounded@5.2.5:
+    resolution: {integrity: sha512-gJdC3HPF0m/rFqfODURh1impz3mcQmXES2qVVhdp4neZ4983GZ8J7fq1/oQ2a+m+Pf3+asPOXALpG9pEtSNoxw==}
+    dev: false
+
+  /@gsap/react@2.1.2(gsap@3.13.0)(react@19.0.0):
+    resolution: {integrity: sha512-JqliybO1837UcgH2hVOM4VO+38APk3ECNrsuSM4MuXp+rbf+/2IG2K1YJiqfTcXQHH7XlA0m3ykniFYstfq0Iw==}
+    peerDependencies:
+      gsap: ^3.12.5
+      react: '>=17'
+    dependencies:
+      gsap: 3.13.0
+      react: 19.0.0
     dev: false
 
   /@iconify/tools@4.1.1:
@@ -1554,6 +1598,19 @@ packages:
 
   /@shikijs/vscode-textmate@9.3.1:
     resolution: {integrity: sha512-79QfK1393x9Ho60QFyLti+QfdJzRQCVLFb97kOIV7Eo9vQU/roINgk7m24uv0a7AUvN//RDH36FLjjK48v0s9g==}
+    dev: false
+
+  /@tabler/icons-react@3.31.0(react@19.0.0):
+    resolution: {integrity: sha512-2rrCM5y/VnaVKnORpDdAua9SEGuJKVqPtWxeQ/vUVsgaUx30LDgBZph7/lterXxDY1IKR6NO//HDhWiifXTi3w==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      '@tabler/icons': 3.31.0
+      react: 19.0.0
+    dev: false
+
+  /@tabler/icons@3.31.0:
+    resolution: {integrity: sha512-dblAdeKY3+GA1U+Q9eziZ0ooVlZMHsE8dqP0RkwvRtEsAULoKOYaCUOcJ4oW1DjWegdxk++UAt2SlQVnmeHv+g==}
     dev: false
 
   /@trysound/sax@0.2.0:

@@ -19,11 +19,30 @@ import "../base.css";
   <body class="mx-auto max-w-screen-2xl">
     <div class="mx-auto flex min-h-screen flex-col justify-between">
       <slot />
-      <Header />
     </div>
   </body><style>
     body {
       font-family: "Montserrat Variable", sans-serif;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    body::before {
+      background-image: var(--noise-texture);
+      opacity: 0.7;
+    }
+
+    body::after {
+      background-image: var(--noise-texture);
+      opacity: 0.3;
+      filter: contrast(150%) brightness(150%);
+      mix-blend-mode: multiply;
     }
   </style>
 </html>

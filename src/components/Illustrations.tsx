@@ -8,12 +8,6 @@ export const Illustrations = ({ images }: { images: IOptimizedImages[] }) => {
   return (
     <div className="flex w-full flex-col gap-8 p-4 md:p-8">
       <div className="flex justify-between md:w-[49%]">
-        <a
-          onClick={() => window.history.back()}
-          className="cursor-pointer text-sm font-light uppercase tracking-wider text-[#4E526F] underline"
-        >
-          Back
-        </a>
         <h1
           className={cn(
             "text-sm font-light uppercase tracking-wider text-[#4E526F]",

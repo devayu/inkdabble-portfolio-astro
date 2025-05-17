@@ -1,0 +1,53 @@
+---
+import GraphicLayout from "@layouts/GraphicLayout.astro";
+// import "../base.css";
+---
+
+<GraphicLayout>
+  <div class="h-screen w-screen overflow-hidden bg-black">
+    <div class="absolute left-0 top-0 h-screen w-screen">
+      <video autoplay muted loop class="h-full w-full object-cover">
+        <source src="/src/assets/dummy.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="blocks fixed left-0 top-0 flex h-screen w-full">
+      {
+        "dabble".split("").map((letter, index) => {
+          return <div class="block h-full flex-1 bg-black" />;
+        })
+      }
+    </div>
+    <div class="mx-auto flex h-full w-[100%] items-center justify-center">
+      {
+        "Graphic".split("").map((letter, index) => {
+          return (
+            <div class="header-item">
+              <div class="relative">
+                <h1
+                  class={`h1 text-8xl font-bold uppercase tracking-wide text-blue-500 letter-${index}`}
+                >
+                  {letter}
+                </h1>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+    <div
+      class="counter absolute bottom-10 left-1/2 flex h-[40px] w-[40px] -translate-x-1/2 justify-center"
+    >
+      <p class="relative text-3xl leading-[120%] text-blue-500">
+        3 <br />
+        2 <br />
+        1
+      </p>
+    </div>
+  </div>
+</GraphicLayout>
+<script>
+  import graphicAnimation from "../animations/graphic-hero.ts";
+  document.addEventListener("astro:page-load", () => {
+    graphicAnimation();
+  });
+</script>

@@ -6,7 +6,7 @@ import "@fontsource-variable/cabin/wdth.css";
 import "@fontsource-variable/syne";
 import "@fontsource-variable/unbounded";
 import { ClientRouter } from "astro:transitions";
-import { GraphicHeader } from "@components/GraphicHeader";
+import { GraphicHeader } from "@components/Graphic/GraphicHeader";
 ---
 
 <!doctype html>
@@ -19,9 +19,11 @@ import { GraphicHeader } from "@components/GraphicHeader";
     <title>Graphics portfolio</title>
     <ClientRouter />
   </head>
-  <body class="mx-auto min-h-screen max-w-screen-2xl overflow-hidden">
+  <body class="max-w-screen-2xl">
     <GraphicHeader client:only />
-    <slot />
+    <div class="min-h-[calc(100vh-8vh)]">
+      <slot />
+    </div>
   </body><style>
     body {
       font-family: "Syne Variable", sans-serif;

@@ -18,11 +18,13 @@ const UnderlineLink = ({
 }) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
   const underlineRef = useRef<HTMLSpanElement>(null);
+  const currentPath = window.location.pathname;
 
   useGSAP(
     (_, contextSafe) => {
       if (!contextSafe) return;
       const onMouseEnter = contextSafe(() => {
+        if (currentPath === href) return;
         gsap.fromTo(
           underlineRef.current,
           {
@@ -38,6 +40,7 @@ const UnderlineLink = ({
       });
 
       const onMouseLeave = contextSafe(() => {
+        if (currentPath === href) return;
         gsap.to(underlineRef.current, {
           width: "0%",
           duration: 0.3,
@@ -67,6 +70,13 @@ const UnderlineLink = ({
           ease: "power2.in",
         });
       });
+      if (currentPath === href) {
+        gsap.to(underlineRef.current, {
+          width: "100%",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      }
 
       linkRef.current?.addEventListener("mouseenter", onMouseEnter);
       linkRef.current?.addEventListener("mouseleave", onMouseLeave);

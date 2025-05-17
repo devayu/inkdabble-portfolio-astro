@@ -10,10 +10,11 @@ export const GraphicLoader = () => {
   const loaderRef = useRef<HTMLDivElement>(null);
   const countRefs = useRef<HTMLDivElement[]>([]);
   const digitH1Refs = useRef<(HTMLHeadingElement | null)[][]>([]);
+  const tl = useRef<gsap.core.Timeline>(null);
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
+      tl.current = gsap.timeline({
         delay: 0.3,
         defaults: {
           duration: 1,
@@ -24,8 +25,8 @@ export const GraphicLoader = () => {
           document.dispatchEvent(completeEvent);
         },
       });
-      countRefs.current.forEach((countRef, index) => {
-        tl.to(
+      countRefs.current.forEach((_, index) => {
+        tl.current?.to(
           digitH1Refs.current[index],
           {
             y: "0%",
@@ -35,7 +36,7 @@ export const GraphicLoader = () => {
           index * 1,
         );
         if (index < countRefs.current.length) {
-          tl.to(
+          tl.current?.to(
             digitH1Refs.current[index],
             {
               y: "-140%",
@@ -46,7 +47,7 @@ export const GraphicLoader = () => {
           );
         }
       });
-      tl.to(
+      tl.current?.to(
         ".word h1",
         {
           y: "0%",
@@ -54,12 +55,12 @@ export const GraphicLoader = () => {
         },
         "<",
       );
-      tl.to(".word-1 h1", {
+      tl.current?.to(".word-1 h1", {
         y: "100%",
         duration: 1,
         delay: 0.3,
       });
-      tl.to(
+      tl.current?.to(
         ".word-2 h1",
         {
           y: "-100%",
@@ -67,7 +68,7 @@ export const GraphicLoader = () => {
         },
         "<",
       );
-      tl.to(".block", {
+      tl.current?.to(".block", {
         clipPath: "polygon(0 0, 100% 0, 100% 0%, 0% 0%)",
         duration: 1,
         stagger: 0.1,
@@ -89,7 +90,7 @@ export const GraphicLoader = () => {
         <div className="block h-full w-full bg-[#020e0a]"></div>
       </div>
       <div className="logo absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 gap-2">
-        <div className="word word-1 relative -left-1">
+        <div className="word word-1 relative">
           <h1>
             <span className="italic-font text-4xl font-bold">ink</span>
           </h1>
@@ -105,7 +106,6 @@ export const GraphicLoader = () => {
           [0, 0],
           [3, 0],
           [6, 7],
-          [8, 0],
           [9, 0],
         ].map((count, index) => {
           if (!digitH1Refs.current[index]) {

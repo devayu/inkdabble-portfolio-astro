@@ -1,14 +1,10 @@
 import ScrambleText from "@components/ScrambleTextWrapper";
-import { StaggerText } from "@components/StaggerText";
 
-export const GraphicHome = () => {
+export const GraphicHome = ({ image }: { image: string }) => {
   return (
     <div className="flex w-full flex-col md:flex-row">
       <div className="w-full md:w-[67vw]">
-        <img
-          src="/src/assets/graphic-home.png"
-          className="graphic-hero-img"
-        ></img>
+        <img src={image} className="graphic-hero-img w-full"></img>
       </div>
       <div className="hidden w-full items-center p-8 md:flex md:w-1/3 md:justify-center md:self-end">
         <div className="text-lg md:max-w-96">

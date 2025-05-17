@@ -1,14 +1,23 @@
 ---
-import { GraphicFooter } from "@components/GraphicFooter";
-import { GraphicHome } from "@components/GraphicHome";
-import { GraphicLoader } from "@components/GraphicLoader";
+import { GraphicFooter } from "@components/Graphic/GraphicFooter";
+import { GraphicHome } from "@components/Graphic/GraphicHome";
+import { GraphicLoader } from "@components/Graphic/GraphicLoader";
 import GraphicLayout from "@layouts/GraphicLayout.astro";
+import { getImage } from "astro:assets";
+import graphicHome from "@assets/graphic-home.png";
+import gryptic from "@assets/gryptic.gif";
+
+const oI = await getImage({
+  src: gryptic,
+  format: "webp",
+  quality: 100,
+});
 ---
 
 <GraphicLayout>
-  <div class="h-full w-full">
+  <div class="min-h-[calc(100vh-8vh)] w-full flex-1 flex-col">
     <GraphicLoader client:only />
-    <GraphicHome client:only />
+    <GraphicHome client:only image={oI.src} />
     <GraphicFooter client:only />
   </div>
 </GraphicLayout>

@@ -8,7 +8,6 @@ import {
 
 import { gsap } from "gsap";
 import { ScrambleTextPlugin } from "gsap/all";
-
 import ScrambleText from "@components/ScrambleTextWrapper";
 import UnderlineLink from "@components/UnderlineLink";
 import { Wave } from "@components/Wave";
@@ -83,8 +82,8 @@ export const GraphicHeader = () => {
     { scope: handRef, dependencies: [isMenuOpen] },
   );
   return (
-    <div className="flex min-w-full justify-between py-1">
-      <div className="w-full border-[1px] border-l-0 border-[#1A2A25] px-4 py-6">
+    <div className="flex h-[8vh] min-w-full justify-between py-1">
+      <div className="flex w-full items-center border-[1px] border-l-0 border-[#1A2A25] px-4 py-6">
         <a href="/" className="text-2xl font-extrabold">
           I <span className="text-[#1be9c2]">.</span>
         </a>

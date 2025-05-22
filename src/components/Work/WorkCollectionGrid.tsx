@@ -116,7 +116,7 @@ export const WorkCollectionGrid = ({
                 key={index}
                 className="grid-item flex h-full w-full flex-1 items-center justify-center border-b-[1px] border-r-[1px] border-[#1A2A25] p-16"
               >
-                <StaggerText>
+                <StaggerText animateOnScroll={false}>
                   <p className="text-center text-2xl font-semibold">
                     {collection.title}
                   </p>
@@ -133,7 +133,7 @@ export const WorkCollectionGrid = ({
                 href={collection.href}
                 className="grid-item flex h-full w-full flex-1 items-center justify-center border-b-[1px] border-r-[1px] border-[#1A2A25] p-16 md:border-b-0"
               >
-                <StaggerText animateOnScroll={true}>
+                <StaggerText animateOnScroll={false}>
                   <p className="text-center text-2xl font-semibold">
                     {collection.title}
                   </p>

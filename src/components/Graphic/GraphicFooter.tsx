@@ -131,7 +131,7 @@ export const GraphicFooter = () => {
       </div>
       <a
         className="flex items-center justify-between border-[1px] border-l-0 border-[#1A2A25] p-8 uppercase md:w-[33vw] md:justify-center"
-        href="/work"
+        href="/graphic/work"
         ref={workRef}
       >
         <ScrambleText>

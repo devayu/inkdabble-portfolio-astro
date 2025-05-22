@@ -91,14 +91,19 @@ export const GraphicHeader = () => {
       <div className="hidden w-full justify-between md:flex">
         <div className="w-[33vw] border-[1px] border-l-0 border-[#1A2A25] uppercase">
           <nav className="mx-auto flex flex-auto items-center justify-center gap-16 px-4 py-6">
-            <UnderlineLink href="/about">
+            <UnderlineLink href="/graphic">
+              <ScrambleText>
+                <p>Home</p>
+              </ScrambleText>
+            </UnderlineLink>
+            <UnderlineLink href="/graphic/about">
               <ScrambleText>
                 <p>About</p>
               </ScrambleText>
             </UnderlineLink>
 
             <ScrambleText>
-              <UnderlineLink href="/work">
+              <UnderlineLink href="/graphic/work">
                 <p>Work</p>
               </UnderlineLink>
             </ScrambleText>

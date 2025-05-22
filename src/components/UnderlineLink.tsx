@@ -19,6 +19,7 @@ const UnderlineLink = ({
   const linkRef = useRef<HTMLAnchorElement>(null);
   const underlineRef = useRef<HTMLSpanElement>(null);
   const currentPath = window.location.pathname;
+  console.log(currentPath);
 
   useGSAP(
     (_, contextSafe) => {

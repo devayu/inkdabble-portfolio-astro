@@ -1,0 +1,59 @@
+---
+import { WorkCollectionGrid } from "@components/Work/WorkCollectionGrid";
+import GraphicLayout from "@layouts/GraphicLayout.astro";
+const workCollections = [
+  {
+    title: "Marks",
+    desc: "Logo Design",
+    href: "/graphic/work/logo-design",
+  },
+  {
+    title: "Identity",
+    desc: "Brand Identity",
+    href: "/graphic/work/brand-identity",
+  },
+  {
+    title: "Covers",
+    desc: "Magazine Cover Design",
+    href: "/graphic/work/magazine-cover-design",
+  },
+  {
+    title: "Socials",
+    desc: "Insta Post Designs",
+    href: "/graphic/work/insta-post-designs",
+  },
+  {
+    title: "Posters",
+    desc: "Poster Design",
+    href: "/graphic/work/poster-design",
+  },
+  {
+    title: "Volumes",
+    desc: "Book Design",
+    href: "/graphic/work/book-design",
+  },
+
+  {
+    title: "Montage",
+    desc: "Montage Art",
+    href: "/graphic/work/montage-art",
+  },
+  {
+    title: "Pixels",
+    desc: "Digital Art",
+    href: "/graphic/work/digital-art",
+  },
+
+  {
+    title: "Frames",
+    desc: "Photography",
+    href: "/graphic/work/photography",
+  },
+];
+---
+
+<GraphicLayout>
+  <div class="min-h-[calc(100vh-8vh)] w-full flex-1 flex-col">
+    <WorkCollectionGrid collections={workCollections} client:only />
+  </div>
+</GraphicLayout>

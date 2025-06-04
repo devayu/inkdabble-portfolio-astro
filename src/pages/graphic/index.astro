@@ -14,8 +14,11 @@ const oI = await getImage({
 });
 ---
 
+<Fragment slot="graphic-preload-head">
+  <link rel="preload" href={oI.src} as="image" />
+</Fragment>
 <GraphicLayout>
-  <div class="min-h-[calc(100vh-8vh)] w-full flex-1 flex-col">
+  <div class="w-full flex-1 flex-col">
     <GraphicLoader client:only />
     <GraphicHome client:only image={oI.src} />
     <GraphicFooter client:only />

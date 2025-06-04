@@ -8,4 +8,7 @@ export interface IOptimizedImages {
   alt?: string;
   optimizedImage?: GetImageResult;
   url?: string;
+  class?: string;
+  videoPath?: string;
+  fillColor?: string;
 }

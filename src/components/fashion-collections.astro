@@ -2,7 +2,7 @@
 import savera from "@assets/savera.png";
 import flawed from "@assets/flawed-beauty.jpeg";
 import clo from "@assets/clo.jpeg";
-import refromInStyle from "@assets/reform.jpeg";
+import refromInStyle from "@assets/reform.png";
 import patternDress from "@assets/print-design.jpeg";
 import illustrations from "@assets/illustrations.png";
 import { Image } from "astro:assets";
@@ -20,6 +20,7 @@ const collections = [
     image: refromInStyle,
     title: "Reform in Style",
     path: "/collections/reform",
+    fit: "contain",
   },
 
   {
@@ -60,11 +61,10 @@ const optimizedImages = await Promise.all(
 <div
   class="flex min-h-screen flex-col items-center justify-center py-16 text-black"
 >
-  <h2 class="mb-16 text-center text-sm uppercase tracking-[0.2em]">
-    Collections
-  </h2>
-  <div class="mx-auto max-w-6xl px-4">
-    <div class="grid grid-cols-1 gap-20 sm:grid-cols-2 md:grid-cols-3">
+  <div class="mx-auto max-w-7xl px-4">
+    <div
+      class="grid grid-cols-1 gap-40 sm:grid-cols-2 md:grid-cols-3 md:gap-60"
+    >
       {
         optimizedImages.map((collection, index) => (
           <div class="flex flex-col gap-2">
@@ -77,11 +77,12 @@ const optimizedImages = await Promise.all(
                   class={cn("h-full w-full object-none")}
                   style={{
                     objectPosition: `${collection.position || "top"}`,
+                    objectFit: `${collection.fit || "none"}`,
                   }}
                 />
               </a>
             </div>
-            <div class="flex justify-between text-xs text-black">
+            <div class="flex justify-between text-black">
               <p>{`0${index + 1}`}</p>
               <p
                 class="text-xs text-black"

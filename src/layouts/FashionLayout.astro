@@ -11,18 +11,33 @@ import { ClientRouter } from "astro:transitions";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/voyage.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/MaziusDisplay-Extraitalic.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
     <meta name="generator" content={Astro.generator} />
     <title>Fashion portfolio</title>
     <ClientRouter />
   </head>
-  <body class="mx-auto min-h-screen max-w-screen-2xl">
+  <body class="mx-auto min-h-screen">
     <Header />
     <slot />
-  </body><style>
+  </body><style is:global>
     body {
       font-family: "Merriweather Variable", serif;
+      /* font-family: "Voyage", sans-serif; */
     }
-    body::before,
+    /* body::before,
     body::after {
       content: "";
       position: fixed;
@@ -41,6 +56,6 @@ import { ClientRouter } from "astro:transitions";
       opacity: 0.3;
       filter: contrast(150%) brightness(150%);
       mix-blend-mode: multiply;
-    }
+    } */
   </style>
 </html>

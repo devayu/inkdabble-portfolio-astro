@@ -2,6 +2,8 @@
 import Header from "@components/header.astro";
 import "@fontsource-variable/montserrat";
 import "@fontsource-variable/nunito-sans";
+import "@fontsource-variable/syne";
+import "@fontsource-variable/playfair-display";
 import { ClientRouter } from "astro:transitions";
 import "../base.css";
 ---
@@ -12,6 +14,13 @@ import "../base.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <link
+      rel="preload"
+      href="/fonts/voyage-bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    /> -->
     <meta name="generator" content={Astro.generator} />
     <title>Astha Maurya</title>
     <ClientRouter />
@@ -21,10 +30,10 @@ import "../base.css";
       <slot />
     </div>
   </body><style>
-    body {
+    /* body {
       font-family: "Montserrat Variable", sans-serif;
-    }
-    body::before,
+    } */
+    /* body::before,
     body::after {
       content: "";
       position: fixed;
@@ -43,6 +52,6 @@ import "../base.css";
       opacity: 0.3;
       filter: contrast(150%) brightness(150%);
       mix-blend-mode: multiply;
-    }
+    } */
   </style>
 </html>

@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import ScrambleText from "@components/ScrambleTextWrapper";
 import { StaggerText } from "@components/StaggerText";
 gsap.registerPlugin(useGSAP);
+
 export const WorkCollectionGrid = ({
   collections,
 }: {

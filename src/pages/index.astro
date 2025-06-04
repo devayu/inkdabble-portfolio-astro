@@ -2,7 +2,10 @@
 import CategorySelector from "../components/ui/category-selector";
 import Layout from "../layouts/Layout.astro";
 import fashionPortfolio from "@assets/fashion-portfolio.png";
-import graphicPortfolio from "@assets/graphic-portfolio.png";
+import graphicPortfolio from "@assets/graphic-home.png";
+import { Category2 } from "@components/Category2";
+import { CategorySvg } from "@components/CategorySvg";
+import { CategoryTabs } from "@components/CategoryTabs";
 import { getImage } from "astro:assets";
 import type { IOptimizedImages } from "src/types/types";
 const unoptimizedImages = [
@@ -12,13 +15,20 @@ const unoptimizedImages = [
     subtitle: "graphic portfolio",
     path: "graphic",
     alt: "graphic portfolio",
+    class: "graphic-font",
+    url: "/graphic",
+    videoPath: "/src/assets/graphic-vid-1.mp4",
+    fillColor: "#020e0a",
   },
   {
-    image: fashionPortfolio,
+    image: graphicPortfolio,
     name: "fashion",
     subtitle: "fashion portfolio",
     path: "fashion",
     alt: "fashion portfolio",
+    class: "fashion-font",
+    url: "/fashion",
+    videoPath: "/src/assets/fashion-vid-1.mp4",
   },
 ];
 
@@ -35,5 +45,7 @@ const optimizedImages = await Promise.all(
 ---
 
 <Layout>
-  <CategorySelector client:only images={optimizedImages} />
+  <Category2 client:only images={optimizedImages} />
+  <!-- <CategoryTabs client:only /> -->
+  <!-- <CategorySvg client:only /> -->
 </Layout>

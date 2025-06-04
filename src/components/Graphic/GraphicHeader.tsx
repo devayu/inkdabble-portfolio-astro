@@ -82,14 +82,14 @@ export const GraphicHeader = () => {
     { scope: handRef, dependencies: [isMenuOpen] },
   );
   return (
-    <div className="flex h-[8vh] min-w-full justify-between py-1">
+    <div className="flex h-[12vh] min-w-full justify-between py-1">
       <div className="flex w-full items-center border-[1px] border-l-0 border-[#1A2A25] px-4 py-6">
         <a href="/" className="text-2xl font-extrabold">
-          I <span className="text-[#1be9c2]">.</span>
+          I<span className="text-[#1be9c2]">.</span>
         </a>
       </div>
       <div className="hidden w-full justify-between md:flex">
-        <div className="w-[33vw] border-[1px] border-l-0 border-[#1A2A25] uppercase">
+        <div className="flex w-[33vw] items-center border-[1px] border-l-0 border-[#1A2A25] uppercase">
           <nav className="mx-auto flex flex-auto items-center justify-center gap-16 px-4 py-6">
             <UnderlineLink href="/graphic">
               <ScrambleText>

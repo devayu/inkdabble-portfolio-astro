@@ -1,0 +1,32 @@
+---
+import { GraphicHeader } from "@components/Graphic/GraphicHeader";
+import { WorkMain } from "@components/Work/WorkMain";
+import GraphicLayout from "@layouts/GraphicLayout.astro";
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { type: "poster-design" },
+      props: {
+        projectName: "Print Design",
+        projectDedicatedLink: "/graphic/work/poster-design",
+        projectDescription: "Print Design",
+      },
+    },
+  ];
+}
+
+const { type } = Astro.params;
+const { projectDedicatedLink, projectDescription, projectName } = Astro.props;
+---
+
+<GraphicLayout>
+  <!-- <GraphicHeader client:only /> -->
+  <WorkMain
+    client:only
+    image=""
+    projectDedicatedLink={projectDedicatedLink}
+    projectName={projectName}
+    projectDescription={projectDescription}
+  />
+</GraphicLayout>
